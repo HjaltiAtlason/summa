@@ -1,0 +1,50 @@
+{
+  "root": true
+  "indent": {
+    "value": "\t",
+    "FunctionExpression": 1,
+    "ArrayExpression": 0,
+    "ObjectExpression": 0
+  }
+  "lineBreak": {
+    "before": {
+      "FunctionDeclaration": ">=1",
+      "FunctionDeclarationOpeningBrace": 0,
+      "FunctionDeclarationClosingBrace": 1
+    },
+    "after": {
+      "FunctionDeclaration": ">=1",
+      "FunctionDeclarationOpeningBrace": 1
+    }
+  }
+  "whiteSpace": {
+    "before": {
+      "FunctionExpressionOpeningBrace": 1,
+      "FunctionExpressionClosingBrace": 1
+    },
+    "after": {
+      "FunctionExpressionOpeningBrace": 1,
+      "FunctionExpressionClosingBrace": -1
+    }
+  }
+  // pipe is a simple way to "pipe" multiple binaries input/output
+  "pipe": {
+    // scripts listed as "before" will be executed before esformatter
+    // and will forward output to next command in the queue
+    "before": [
+      "strip-debug",
+      "./bin/my-custom-script.sh --foo true -zx"
+    ],
+    // scripts listed as "after" will be executed after esformatter
+    "after": [
+      "baz --keepLineBreaks"
+    ]
+  }
+  // executes plugins in the same order as listed in the Array
+  "plugins": [ "esformatter-sample-plugin", "foobar" ]
+  "extends": [
+    "preset:foobar", // load "esformatter-preset-foobar" from "./node_modules"
+    "./lorem_ipsum.json" // load relative config file
+  ]
+
+}
